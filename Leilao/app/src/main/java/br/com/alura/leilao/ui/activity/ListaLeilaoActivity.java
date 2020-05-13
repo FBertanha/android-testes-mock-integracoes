@@ -66,19 +66,6 @@ public class ListaLeilaoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        client.todos(new RespostaListener<List<Leilao>>() {
-            @Override
-            public void sucesso(List<Leilao> leiloes) {
-                adapter.atualiza(leiloes);
-            }
-
-            @Override
-            public void falha(String mensagem) {
-                Toast.makeText(ListaLeilaoActivity.this,
-                        MENSAGEM_AVISO_FALHA_AO_CARREGAR_LEILOES,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -97,4 +84,19 @@ public class ListaLeilaoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void buscaLeiloes(final ListaLeilaoAdapter adapter, LeilaoWebClient client) {
+        client.todos(new RespostaListener<List<Leilao>>() {
+            @Override
+            public void sucesso(List<Leilao> leiloes) {
+                adapter.atualiza(leiloes);
+            }
+
+            @Override
+            public void falha(String mensagem) {
+                Toast.makeText(ListaLeilaoActivity.this,
+                        MENSAGEM_AVISO_FALHA_AO_CARREGAR_LEILOES,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

@@ -27,7 +27,6 @@ public class ListaLeilaoAdapterTest {
     @Spy
     private ListaLeilaoAdapter adapter = new ListaLeilaoAdapter(context);
 
-
     @Test
     public void deve_atualizarListaLeiloes_QuandoReceberListaLeiloes() {
 

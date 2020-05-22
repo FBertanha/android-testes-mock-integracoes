@@ -1,4 +1,4 @@
-package br.com.alura.leilao.ui.activity;
+package br.com.alura.leilao.ui;
 
 import java.util.List;
 

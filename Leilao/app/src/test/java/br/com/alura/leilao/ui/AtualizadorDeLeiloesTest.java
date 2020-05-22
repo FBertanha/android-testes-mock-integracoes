@@ -1,6 +1,4 @@
-package br.com.alura.leilao.ui.activity;
-
-import android.content.Context;
+package br.com.alura.leilao.ui;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,10 +18,8 @@ import br.com.alura.leilao.api.retrofit.client.RespostaListener;
 import br.com.alura.leilao.model.Leilao;
 import br.com.alura.leilao.ui.recyclerview.adapter.ListaLeilaoAdapter;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -36,8 +32,6 @@ public class AtualizadorDeLeiloesTest {
     private ListaLeilaoAdapter adapter;
     @Mock
     private LeilaoWebClient client;
-    @Mock
-    private Context context;
     @Mock
     private AtualizadorDeLeiloes.ErroCarregaLeiloesListener erroListener;
 
@@ -57,7 +51,7 @@ public class AtualizadorDeLeiloesTest {
             }
         }).when(client).todos(ArgumentMatchers.any(RespostaListener.class));
 
-        atualizador.buscaLeiloes( adapter, client, erroListener);
+        atualizador.buscaLeiloes(adapter, client, erroListener);
         verify(client).todos(ArgumentMatchers.any(RespostaListener.class));
         verify(adapter).atualiza(new ArrayList<Leilao>(Arrays.asList(
                 new Leilao("Panela de pressao"),
